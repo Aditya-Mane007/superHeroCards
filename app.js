@@ -127,6 +127,10 @@ const getUserCard = async () => {
   const url = String(base_url + id);
 
   let headersList = {
+    "Cache-Control": "no-cache",
+    "User-Agent": "https://lucky-tanuki-809ea5.netlify.app/",
+    "Accept-Encoding": "gzip, deflate, br",
+    Connection: "keep-alive",
     Accept: "*/*",
     mode: "no-cors",
   };
