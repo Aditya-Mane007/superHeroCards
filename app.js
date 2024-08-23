@@ -128,7 +128,7 @@ const getUserCard = async () => {
 
   let headersList = {
     Accept: "*/*",
-    mode: "no-cors",
+    "User-Agent": "https://lucky-tanuki-809ea5.netlify.app/",
   };
 
   const response = await fetch(url, {
