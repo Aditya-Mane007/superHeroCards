@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Super Hero Card Battle | Game</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div
+        class="container"
+        style="display: flex; justify-content: space-between"
+      >
+        <div class="logo">Super Hero Card Battle</div>
+        '
+        <button class="logout btn">Reset</button>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main>
+      <!-- Step 1 :  User Enters their Name -->
+      <section class="info-section">
+        <div class="container">
+          <form action="">
+            <div class="inputDiv">
+              <input
+                type="text"
+                placeholder="Enter Your Name"
+                class="nameInput"
+              />
+              <div class="message"></div>
+            </div>
+            <button type="submit" class="btn">Submit And Play</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Step 2 : Start Game Button , User clicks Button -->
+      <section class="startGame-section">
+        <div class="container">
+          <button class="btn start-btn">Start Game</button>
+        </div>
+      </section>
+
+      <!-- Step 3 : checkout cards -->
+      <section class="play-section">
+        <div class="container">
+          <div class="players">
+            <div class="user score-card">
+              Aditya <span class="score">00</span>
+            </div>
+            <div class="VSText" style="visibility: hidden">dsaf</div>
+            <div class="robot score-card">
+              Robot <span class="score">00</span>
+            </div>
+          </div>
+          <div class="cards">
+            <div class="card" id="userCard">
+              <div class="innerCard UserInnerCard">
+                <div class="frontSide">
+                  <div class="heroImage">
+                    <img src="./Images/BackgroundImage.jpeg" alt="" />
+                  </div>
+                  <div class="hero-info">
+                    <li>Name : <span class="value"></span></li>
+                    <li class="trait">
+                      Intelligence : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Strength : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Speed : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Durability : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Power : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Combat : <span class="value">100</span>
+                    </li>
+                  </div>
+                </div>
+                <div class="backSide"></div>
+              </div>
+            </div>
+            <div class="VSText">V/S</div>
+            <div class="card">
+              <div class="innerCard">
+                <div class="frontSide">
+                  <div class="heroImage">
+                    <img src="./Images/BackgroundImage.jpeg" alt="" />
+                  </div>
+                  <div class="hero-info">
+                    <li class="trait">
+                      Intelligence : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Strength : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Speed : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Durability : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Power : <span class="value">100</span>
+                    </li>
+                    <li class="trait">
+                      Combat : <span class="value">100</span>
+                    </li>
+                  </div>
+                </div>
+                <div class="backSide"></div>
+              </div>
+            </div>
+          </div>
+          <div class="selectValue" style="margin: 0.5rem 0">
+            <select name="trait" id="trait">
+              <option value="Intelligence" selected disabled>
+                Select trait
+              </option>
+              <option value="Intelligence">Intelligence</option>
+              <option value="Strength">Strength</option>
+              <option value="Speed">Speed</option>
+              <option value="Durability">Durability</option>
+              <option value="Power">Power</option>
+              <option value="Combat">Combat</option>
+            </select>
+          </div>
+          <div class="btns">
+            <button class="btn">Show</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <p>&copy; <span>Super Hero Card Battle</span></p>
+
+        <button class="rules-btn btn">Rules</button>
+      </div>
+    </footer>
+    <!-- Modals -->
+    <div class="background" id="rules-modal">
+      <div class="rule-modal">
+        <header>
+          <button class="btn" id="ruleCloseBtn" style="padding: 0.5rem 1rem">
+            X
+          </button>
+        </header>
+        <div class="rules">
+          <ol>
+            <li>Each player (you and the robot) draws a card.</li>
+            <li>
+              You pick the strongest trait from your card (Intelligence,
+              Strength, Speed, Durability, Power, and Combat) or viceversa
+            </li>
+            <li>The chosen trait is compared with the each others card.</li>
+            <li>The player with the higher trait score earns 1 point.</li>
+            <li>The first player to reach 5 points wins the game.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,362 @@
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+*,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Comic Neue", Arial;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+:root {
+  --Black: #333333;
+  --White: #ffffff;
+  --Gray: #e9ecef;
+  --Red: #ff0000;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url("./Images/BackgroundImage.jpeg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--White);
+}
+
+/* Custom Class Start */
+.container {
+  width: 90%;
+  padding: 0.5rem 0;
+  margin: auto;
+}
+
+button {
+  width: auto;
+  text-align: left;
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background: transparent;
+  border: 2px solid var(--White);
+  backdrop-filter: blur(5px);
+  color: var(--White);
+}
+
+form {
+  flex-direction: column;
+}
+.inputDiv {
+  width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+.inputDiv input {
+  width: 100%;
+  height: auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: 2px solid var(--White);
+  background-color: transparent;
+  outline-color: var(--White);
+  color: var(--White);
+  &::placeholder {
+    color: var(--White);
+  }
+}
+
+.btn {
+  cursor: pointer;
+}
+
+/* Custom Class End */
+
+/* Navbar */
+nav {
+  width: 100%;
+  flex: 0;
+}
+nav .logo {
+  font-size: 1.5rem;
+  color: var(--White);
+}
+
+/* Main */
+main {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main > div {
+  width: 100%;
+  height: 100%;
+}
+
+.startGame-section {
+  width: 100%;
+}
+
+.startGame-section .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-section {
+  width: 100%;
+}
+
+.play-section {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.play-section .cards {
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-section .players .VSText {
+  font-size: 1.5rem;
+  background: rgb(0, 212, 255);
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(253, 62, 102, 1) 100%
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.play-section .cards .VSText {
+  font-size: 1.5rem;
+  background: rgb(0, 212, 255);
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(253, 62, 102, 1) 100%
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+.play-section .card {
+  position: relative;
+  width: 45%;
+  height: 350px;
+  perspective: 1000px;
+}
+
+.play-section .innerCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  /* background-color: aqua; */
+}
+
+/* On Hover */
+.play-section .card .innerCard {
+  cursor: pointer;
+  transform: rotateY(0deg);
+}
+
+.play-section .frontSide {
+  width: 100%;
+  height: 100%;
+  transform: rotateY(180deg);
+}
+
+.play-section .frontSide .heroImage {
+  width: 100%;
+  height: 50%;
+  border-radius: 10px;
+}
+.play-section .frontSide .heroImage img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.play-section .frontSide .hero-info {
+  margin: 1rem 0.5rem;
+  list-style: none;
+}
+
+/* .play-section .frontSide .hero-info li {
+  margin: 0.3rem 0;
+} */
+
+.play-section .frontSide,
+.backSide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: transparent;
+  backdrop-filter: blur(3.5px);
+  border: 2px solid var(--White);
+  border-radius: 10px;
+}
+
+.play-section .backSide {
+  background-image: url("./Images/CardBackgroundImage.jpeg");
+}
+
+.play-section .players {
+  display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-section .players .score-card {
+  width: 45%;
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem 0;
+  /* font-size: 1.5rem; */
+}
+
+.play-section .cards .play-section .selectValue {
+  width: 50%;
+  display: flex;
+  /* justify-content: flex-start; */
+}
+
+.play-section .selectValue select {
+  width: auto;
+  height: 2rem;
+  background: transparent;
+  backdrop-filter: blur(3.5px);
+  color: var(--White);
+  outline: none;
+  border: 1px solid var(--White);
+  border-radius: 5px;
+}
+
+option {
+  background-color: #16a3ef;
+}
+
+.btns {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  height: auto;
+  flex: 0;
+  color: var(--White);
+}
+
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Modals */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.background .rule-modal {
+  width: 90%;
+  height: auto;
+  border: 2px solid var(--White);
+  padding: 0.5rem 1rem 1rem 1rem;
+  border-radius: 10px;
+}
+
+.background .rule-modal header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.background .rule-modal ol {
+  padding: 1rem;
+}
+.background .rule-modal li {
+  color: var(--White);
+  margin: 1rem 0;
+  font-size: 1.3rem;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 80%;
+    padding: 0.5rem 0;
+    margin: auto;
+  }
+  nav .logo {
+    font-size: 2rem;
+    color: var(--White);
+  }
+
+  .inputDiv input {
+    width: 50%;
+  }
+  .play-section {
+    padding: 0 6rem;
+  }
+
+  .play-section .cards {
+    display: flex;
+    align-items: center;
+  }
+
+  .play-section .card {
+    position: relative;
+    width: 30%;
+    height: 350px;
+    perspective: 1000px;
+    /* border: 1px solid white; */
+    /* background-color: gray; */
+  }
+
+  .play-section .players {
+    display: flex;
+    align-items: center;
+  }
+
+  .play-section .players .score-card {
+    position: relative;
+    width: 30%;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+  }
+  .play-section .cards .VSText {
+    font-size: 5rem;
+  }
+
+  .background .rule-modal {
+    width: 50%;
+  }
+}
