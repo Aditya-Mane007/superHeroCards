@@ -194,16 +194,6 @@ const getUserCard = async () => {
 
   getCard(id).then((superHero) => {
     userCardStats = superHero;
-    if (isUser % 2 !== 0) {
-      const statsArr = [];
-
-      for (let x in superHero.powerstats) {
-        statsArr.push(superHero.powerstats[x]);
-      }
-
-      userPowerFullStat = Math.max(...statsArr).toString();
-    }
-
     setTimeout(() => {
       setUserCard(superHero);
     }, 500);
