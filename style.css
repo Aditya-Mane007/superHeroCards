@@ -76,6 +76,13 @@ form {
   cursor: pointer;
 }
 
+.message {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: var(--Red);
+  backdrop-filter: blur(1.5px);
+}
+
 /* Custom Class End */
 
 /* Navbar */
@@ -286,10 +293,10 @@ footer .container {
 
 .background .rule-modal {
   width: 90%;
-  height: auto;
   border: 2px solid var(--White);
   padding: 0.5rem 1rem 1rem 1rem;
   border-radius: 10px;
+  text-align: center;
 }
 
 .background .rule-modal header {
@@ -306,6 +313,45 @@ footer .container {
   font-size: 1.3rem;
 }
 
+.finalResult {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  backdrop-filter: blur(10px);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resultBackground {
+  position: absolute;
+  width: 100%;
+  bottom: 5%;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+}
+
+.resultBackground .result-modal {
+  width: 90%;
+  margin-inline: auto;
+  border-radius: 10px;
+
+  bottom: 0;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  float: inline-end;
+}
+
+.btns .drawCard {
+  display: none;
+}
 @media screen and (min-width: 768px) {
   .container {
     width: 80%;
@@ -359,4 +405,24 @@ footer .container {
   .background .rule-modal {
     width: 50%;
   }
+
+  .resultBackground .result-modal {
+    width: 50%;
+  }
+}
+
+.Notification-message {
+  width: 60%;
+  height: 3rem;
+  background: transparent;
+  backdrop-filter: blur(1rem);
+  display: none;
+  /* display: flex; */
+  align-items: center;
+  padding: 0 1rem;
+  position: absolute;
+  top: 10%;
+  right: 0;
+  border-radius: 10px;
+  /* display: none; */
 }
