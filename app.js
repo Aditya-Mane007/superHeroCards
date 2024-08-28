@@ -204,7 +204,9 @@ const getUserCard = async () => {
       userPowerFullStat = Math.max(...statsArr).toString();
     }
 
-    setUserCard(superHero);
+    setTimeout(() => {
+      setUserCard(superHero);
+    }, 500);
   });
 };
 
@@ -411,8 +413,12 @@ function hidePlayAgain() {
 // Loader
 function loader() {
   const innerCard = document.querySelector(".innerCard");
-  (innerCard.style.display = "flex"),
-    (innerCard.style.justifyContent = "center");
+  innerCard.style.backgroundImage = "url('./images/CardBackgroundImage.jpeg')";
+  innerCard.style.backgroundRepeat = "no-repeat";
+  innerCard.style.backgroundSize = "cover";
+  innerCard.style.display = "flex";
+
+  innerCard.style.justifyContent = "center";
   innerCard.style.alignItems = "center";
   innerCard.style.border = "2px solid white";
   innerCard.style.borderRadius = "10px";
