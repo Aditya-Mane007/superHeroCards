@@ -411,10 +411,7 @@ function playGame() {
   hideRobotCard();
   hideUserCard();
 
-  getUserCard();
-  getRobotCard();
-
-  isOver();
+  !isOver() ? (getUserCard(), getRobotCard()) : "";
 
   if (isUser % 2 !== 0) {
     document.querySelector("select").style.display = "block";
@@ -428,14 +425,16 @@ function playGame() {
 
 // To check if game is over
 function isOver() {
-  if (userScore === 5 ) {
+  if (userScore === 5) {
     displayPlayAgain("User Won");
-    return;
+    return true;
   }
   if (robotScore === 5) {
     displayPlayAgain("Robot Won");
-    return;
+    return true;
   }
+
+  return false;
 }
 
 // API
