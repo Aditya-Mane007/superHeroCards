@@ -13,7 +13,7 @@ class User {
 }
 
 const base_url =
-  "https://superheroapi.com/api/d67d75e611f0ac485e4fcf7f7e412f32/";
+  "https://superheroapi.com/api/9db56449e42575076903e1d40945b551/";
 
 const ruleBtn = document.querySelector(".rules-btn");
 const ruleCloseBtn = document.querySelector("#ruleCloseBtn");
