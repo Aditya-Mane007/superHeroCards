@@ -24,7 +24,7 @@
       <!-- Step 1 :  User Enters their Name -->
       <section class="info-section">
         <div class="container">
-          <form action="">
+          <form>
             <div class="inputDiv">
               <input
                 type="text"
@@ -45,16 +45,18 @@
         </div>
       </section>
 
-      <!-- Step 3 : checkout cards -->
+      <!-- Step 3 : Play Area -->
       <section class="play-section">
         <div class="container">
           <div class="players">
             <div class="user score-card">
-              Aditya <span class="score">00</span>
+              Aditya :
+              <span class="user-score" style="margin: 0 0.2rem">00</span>
             </div>
             <div class="VSText" style="visibility: hidden">dsaf</div>
             <div class="robot score-card">
-              Robot <span class="score">00</span>
+              Robot :
+              <span class="robot-score" style="margin: 0 0.2rem">00</span>
             </div>
           </div>
           <div class="cards">
@@ -90,8 +92,8 @@
               </div>
             </div>
             <div class="VSText">V/S</div>
-            <div class="card">
-              <div class="innerCard">
+            <div class="card" id="robotCard">
+              <div class="innerCard RobotInnerCard">
                 <div class="frontSide">
                   <div class="heroImage">
                     <img src="./Images/BackgroundImage.jpeg" alt="" />
@@ -123,19 +125,23 @@
           </div>
           <div class="selectValue" style="margin: 0.5rem 0">
             <select name="trait" id="trait">
-              <option value="Intelligence" selected disabled>
+              <option value="select trait" selected disabled>
                 Select trait
               </option>
-              <option value="Intelligence">Intelligence</option>
-              <option value="Strength">Strength</option>
-              <option value="Speed">Speed</option>
-              <option value="Durability">Durability</option>
-              <option value="Power">Power</option>
-              <option value="Combat">Combat</option>
+              <option value="intelligence">Intelligence</option>
+              <option value="strength">Strength</option>
+              <option value="speed">Speed</option>
+              <option value="durability">Durability</option>
+              <option value="power">Power</option>
+              <option value="combat">Combat</option>
             </select>
           </div>
           <div class="btns">
-            <button class="btn">Show</button>
+            <button class="btn show-btn">Show</button>
+          </div>
+
+          <div class="btns">
+            <button class="btn drawCard">Draw Card</button>
           </div>
         </div>
       </section>
@@ -149,7 +155,9 @@
         <button class="rules-btn btn">Rules</button>
       </div>
     </footer>
+
     <!-- Modals -->
+    <!-- Rules Modal -->
     <div class="background" id="rules-modal">
       <div class="rule-modal">
         <header>
@@ -171,6 +179,24 @@
         </div>
       </div>
     </div>
+
+    <!-- Result Modal -->
+    <!-- <div class="resultBackground" id="result-modal">
+      <div class="result-modal">
+        <div class="btns">
+          <button class="btn drawCard">Next Draw</button>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="finalResult">
+      <h1 class="winnerText" style="margin: 1rem"></h1>
+      <div class="btns">
+        <button class="btn playAgain">Play Again</button>
+      </div>
+    </div>
+
     <script type="module" src="./app.js"></script>
+    <!-- <script src="./index.js"></script> -->
   </body>
 </html>
