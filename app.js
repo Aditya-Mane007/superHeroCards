@@ -86,30 +86,21 @@ showBtn.addEventListener("click", () => {
       alert("Please select trait ");
       return;
     }
-
     userPowerFullStat = Number(userCardStats.powerstats[selectedValue]);
     robotPowerFullStat = Number(robotCardStats.powerstats[selectedValue]);
 
-    console.log(userPowerFullStat, robotPowerFullStat);
+    console.log(
+      `User : ${userPowerFullStat} v/s Robot : ${robotPowerFullStat}`
+    );
 
-    if (!isNaN(userPowerFullStat) && !isNaN(robotPowerFullStat)) {
-      if (userPowerFullStat > robotPowerFullStat) {
-        alert("User Won");
-        userScore++;
-      } else if (userPowerFullStat === robotCardStats) {
-        alert("It's Tie");
-      } else {
-        alert("Robot Won");
-        robotScore++;
-      }
-    } else if (isNaN(userPowerFullStat) && isNaN(robotPowerFullStat)) {
-      alert("No One Won , Selected stats are not comparible");
+    if (userPowerFullStat > robotPowerFullStat) {
+      alert("User Won");
+      userScore++;
+    } else if (userPowerFullStat === robotPowerFullStat) {
+      alert("It's Tie");
     } else {
-      if (!isNaN(robotPowerFullStat)) {
-        robotScore++;
-      } else {
-        userScore++;
-      }
+      alert("Robot Won");
+      robotScore++;
     }
 
     console.log(`User : ${userScore}, Robot : ${robotScore}`);
@@ -118,7 +109,7 @@ showBtn.addEventListener("click", () => {
 
     setTimeout(() => {
       displayResult();
-    }, 2000);
+    }, 1000);
   }
 
   userScoreText.innerHTML = "0" + userScore;
@@ -188,46 +179,46 @@ const getUserCard = async () => {
 
   const id = Math.floor(Math.random() * 731);
 
-  getCard(id).then((superHero) => {
-    for (let key in superHero.powerstats) {
-      console.log("User Card :" + key + " : " + superHero.powerstats[key]);
-      if (isNaN(Number(superHero.powerstats[key]))) {
-        isNonNumber = true;
-      }
-    }
+  const card = await getCard(id);
 
-    if (isNonNumber) {
-      getUserCard();
-    } else {
-      setTimeout(() => {
-        userCardStats = superHero;
-        setUserCard(superHero);
-      }, 500);
+  for (let key in card.powerstats) {
+    if (isNaN(Number(card.powerstats[key]))) {
+      isNonNumber = true;
     }
-  });
+  }
+
+  if (isNonNumber) {
+    getUserCard();
+    return;
+  } else {
+    setTimeout(() => {
+      userCardStats = card;
+      setUserCard(userCardStats);
+    }, 500);
+  }
 };
 
 const getRobotCard = async () => {
   let isNonNumber = false;
   const id = Math.floor(Math.random() * 731);
 
-  getCard(id).then((superHero) => {
-    for (let key in superHero.powerstats) {
-      console.log("Robot Value :" + key + " : " + superHero.powerstats[key]);
-      if (isNaN(Number(superHero.powerstats[key]))) {
-        isNonNumber = true;
-      }
-    }
+  const card = await getCard(id);
 
-    if (isNonNumber) {
-      getRobotCard();
-    } else {
-      setTimeout(() => {
-        robotCardStats = superHero;
-        setRobotCard(superHero);
-      }, 500);
+  for (let key in card.powerstats) {
+    if (isNaN(Number(card.powerstats[key]))) {
+      isNonNumber = true;
     }
-  });
+  }
+
+  if (isNonNumber) {
+    getRobotCard();
+    return;
+  } else {
+    setTimeout(() => {
+      robotCardStats = card;
+      setRobotCard(robotCardStats);
+    }, 500);
+  }
 };
 
 // Setting Cards
@@ -317,14 +308,9 @@ function selectrobotValue(superHero) {
   const maxStatKey = Object.keys(superHero.powerstats).find(
     (key) => superHero.powerstats[key] === maxStatValue.toString()
   );
-  console.log("Max State : ", maxStatKey);
+
   robotChoice = maxStatKey;
   robotPowerFullStat = Number(maxStatValue);
-
-  // robotPowerFullStat = maxStatValue;
-
-  console.log("Robot Choice : ", robotChoice);
-  console.log("Robot Powerfull Stat : ", robotPowerFullStat);
 
   calculateRobotsTurn();
 }
@@ -334,31 +320,18 @@ function calculateRobotsTurn() {
   hideUserCard();
   alert("Robot Choose : " + robotChoice);
 
-  if (!isNaN(robotPowerFullStat)) {
-  }
   userPowerFullStat = Number(userCardStats.powerstats[robotChoice]);
 
-  console.log("User Powerfull Stat ", userPowerFullStat);
-  console.log("Robot Powerfull stat ", robotPowerFullStat);
+  console.log(`User : ${userPowerFullStat} v/s Robot : ${robotPowerFullStat}`);
 
-  if (!isNaN(userPowerFullStat) && !isNaN(robotPowerFullStat)) {
-    if (userPowerFullStat > robotPowerFullStat) {
-      alert("User Won");
-      userScore++;
-    } else if (userPowerFullStat === robotCardStats) {
-      alert("It's Tie");
-    } else {
-      alert("Robot Won");
-      robotScore++;
-    }
-  } else if (isNaN(userPowerFullStat) && isNaN(robotPowerFullStat)) {
-    alert("No One Won , Selected stats are not comparible");
+  if (userPowerFullStat > robotPowerFullStat) {
+    userScore++;
+    alert("User Won");
+  } else if (userPowerFullStat === robotPowerFullStat) {
+    alert("It's Tie");
   } else {
-    if (!isNaN(robotPowerFullStat)) {
-      robotScore++;
-    } else {
-      userScore++;
-    }
+    robotScore++;
+    alert("Robot Won");
   }
 
   userScoreText.innerHTML = "0" + userScore;
@@ -370,7 +343,7 @@ function calculateRobotsTurn() {
   setTimeout(() => {
     displayResult();
     showBtn.style.display = "none";
-  }, 1000);
+  }, 500);
 
   isUser++;
 
@@ -440,7 +413,7 @@ function playGame() {
   hideRobotCard();
   hideUserCard();
 
-  !isOver() ? (getUserCard(), getRobotCard()) : "";
+  !isOver() && (getUserCard(), getRobotCard());
 
   if (isUser % 2 !== 0) {
     document.querySelector("select").style.display = "block";
@@ -456,10 +429,12 @@ function playGame() {
 function isOver() {
   if (userScore === 5) {
     displayPlayAgain("User Won");
+    userScore = 0;
     return true;
   }
   if (robotScore === 5) {
     displayPlayAgain("Robot Won");
+    robotScore = 0;
     return true;
   }
 
@@ -503,7 +478,7 @@ async function getCard(id) {
       },
     };
   } catch (error) {
-    alert(`Error : ${error}`);
+    alert(error);
     return;
   }
 }

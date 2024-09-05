@@ -311,6 +311,7 @@ footer .container {
   color: var(--White);
   margin: 1rem 0;
   font-size: 1.3rem;
+  text-align: start;
 }
 
 .finalResult {
@@ -404,6 +405,7 @@ footer .container {
 
   .background .rule-modal {
     width: 50%;
+    text-align: start;
   }
 
   .resultBackground .result-modal {
