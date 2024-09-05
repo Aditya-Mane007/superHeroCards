@@ -24,8 +24,6 @@ const logout = document.querySelector(".logout");
 const drawCard = document.querySelector(".drawCard");
 const playAgain = document.querySelector(".playAgain");
 const userName = document.querySelector(".user-name");
-userName.innerHTML = JSON.parse(localStorage.getItem("User")).name;
-userName.style.fontSize = "2rem";
 
 let isUser = 1;
 let user;
@@ -437,6 +435,8 @@ function loader() {
 // Play Game
 
 function playGame() {
+  userName.innerHTML = JSON.parse(localStorage.getItem("User")).name;
+  userName.style.fontSize = "2rem";
   hideRobotCard();
   hideUserCard();
 
