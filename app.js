@@ -119,8 +119,8 @@ showBtn.addEventListener("click", () => {
     }, 2000);
   }
 
-  userScoreText.innerHTML = userScore;
-  robotScoreText.innerHTML = robotScore;
+  userScoreText.innerHTML = "0" + userScore;
+  robotScoreText.innerHTML = "0" + robotScore;
   isUser++;
 });
 
@@ -293,8 +293,7 @@ function selectrobotValue(superHero) {
   );
   console.log("Max State : ", maxStatKey);
   robotChoice = maxStatKey;
-  robotPowerFullStat =
-    maxStatValue === NaN || undefined ? "null" : Number(maxStatValue);
+  robotPowerFullStat = Number(maxStatValue);
 
   // robotPowerFullStat = maxStatValue;
 
@@ -309,7 +308,10 @@ function calculateRobotsTurn() {
   hideUserCard();
   alert("Robot Choose : " + robotChoice);
 
-  userPowerFullStat = Number(userCardStats.powerstats[robotChoice]);
+  if (!isNaN(robotPowerFullStat)) {
+    
+  }
+    userPowerFullStat = Number(userCardStats.powerstats[robotChoice]);
 
   console.log("User Powerfull Stat ", userPowerFullStat);
   console.log("Robot Powerfull stat ", robotPowerFullStat);
@@ -334,8 +336,8 @@ function calculateRobotsTurn() {
     }
   }
 
-  userScoreText.innerHTML = userScore;
-  robotScoreText.innerHTML = robotScore;
+  userScoreText.innerHTML = "0" + userScore;
+  robotScoreText.innerHTML = "0" + robotScore;
 
   displayUserCard();
   displayRobotCard();
