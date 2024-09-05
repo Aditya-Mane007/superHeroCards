@@ -182,25 +182,49 @@ form.addEventListener("submit", (e) => {
 // Get Random User Card
 const getUserCard = async () => {
   loader();
+  let isNonNumber = false;
 
   const id = Math.floor(Math.random() * 731);
 
   getCard(id).then((superHero) => {
-    userCardStats = superHero;
+    for (let value in superHero.powerstats) {
+      console.log("User Card :" + superHero.powerstats[value]);
+      if (isNaN(Number(superHero.powerstats[value]))) {
+        isNonNumber = true;
+      }
+    }
 
-    setTimeout(() => {
-      setUserCard(superHero);
-    }, 500);
+    if (isNonNumber) {
+      getUserCard();
+    } else {
+      setTimeout(() => {
+        userCardStats = superHero;
+        setUserCard(superHero);
+      }, 500);
+    }
   });
 };
 
 const getRobotCard = async () => {
+  let isNonNumber = false;
   const id = Math.floor(Math.random() * 731);
 
   getCard(id).then((superHero) => {
-    console.log(superHero);
-    robotCardStats = superHero;
-    setRobotCard(superHero);
+    for (let value in superHero.powerstats) {
+      console.log("Robot Value :" + superHero.powerstats[value]);
+      if (isNaN(Number(superHero.powerstats[value]))) {
+        isNonNumber = true;
+      }
+    }
+
+    if (isNonNumber) {
+      getRobotCard();
+    } else {
+      setTimeout(() => {
+        robotCardStats = superHero;
+        setRobotCard(superHero);
+      }, 500);
+    }
   });
 };
 
@@ -309,9 +333,8 @@ function calculateRobotsTurn() {
   alert("Robot Choose : " + robotChoice);
 
   if (!isNaN(robotPowerFullStat)) {
-    
   }
-    userPowerFullStat = Number(userCardStats.powerstats[robotChoice]);
+  userPowerFullStat = Number(userCardStats.powerstats[robotChoice]);
 
   console.log("User Powerfull Stat ", userPowerFullStat);
   console.log("Robot Powerfull stat ", robotPowerFullStat);
