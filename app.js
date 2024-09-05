@@ -23,6 +23,10 @@ const showBtn = document.querySelector(".show-btn");
 const logout = document.querySelector(".logout");
 const drawCard = document.querySelector(".drawCard");
 const playAgain = document.querySelector(".playAgain");
+const userName = document.querySelector(".user-name");
+userName.innerHTML = JSON.parse(localStorage.getItem("User")).name;
+userName.style.fontSize = "2rem";
+
 let isUser = 1;
 let user;
 
@@ -187,9 +191,9 @@ const getUserCard = async () => {
   const id = Math.floor(Math.random() * 731);
 
   getCard(id).then((superHero) => {
-    for (let value in superHero.powerstats) {
-      console.log("User Card :" + superHero.powerstats[value]);
-      if (isNaN(Number(superHero.powerstats[value]))) {
+    for (let key in superHero.powerstats) {
+      console.log("User Card :" + key + " : " + superHero.powerstats[key]);
+      if (isNaN(Number(superHero.powerstats[key]))) {
         isNonNumber = true;
       }
     }
@@ -210,9 +214,9 @@ const getRobotCard = async () => {
   const id = Math.floor(Math.random() * 731);
 
   getCard(id).then((superHero) => {
-    for (let value in superHero.powerstats) {
-      console.log("Robot Value :" + superHero.powerstats[value]);
-      if (isNaN(Number(superHero.powerstats[value]))) {
+    for (let key in superHero.powerstats) {
+      console.log("Robot Value :" + key + " : " + superHero.powerstats[key]);
+      if (isNaN(Number(superHero.powerstats[key]))) {
         isNonNumber = true;
       }
     }
